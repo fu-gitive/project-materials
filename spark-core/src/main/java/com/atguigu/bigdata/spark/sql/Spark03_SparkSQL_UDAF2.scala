@@ -9,7 +9,7 @@ object Spark03_SparkSQL_UDAF2 {
     def main(args: Array[String]): Unit = {
 
         // TODO 创建SparkSQL的运行环境
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().config(sparkConf).getOrCreate()
         import spark.implicits._
         val df = spark.read.json("datas/user.json")

@@ -17,7 +17,7 @@ object SparkStreaming08_Close {
 
          */
 
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
         val ssc = new StreamingContext(sparkConf, Seconds(3))
 
         val lines = ssc.socketTextStream("localhost", 9999)

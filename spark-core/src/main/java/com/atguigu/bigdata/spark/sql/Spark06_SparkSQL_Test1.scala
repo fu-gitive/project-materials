@@ -8,7 +8,7 @@ object Spark06_SparkSQL_Test1 {
     def main(args: Array[String]): Unit = {
         System.setProperty("HADOOP_USER_NAME", "root")
 
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().enableHiveSupport().config(sparkConf).getOrCreate()
 
         spark.sql("use atguigu")

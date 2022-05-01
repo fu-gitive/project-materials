@@ -8,8 +8,8 @@ import scala.collection.mutable
 object Spark03_WordCount {
     def main(args: Array[String]): Unit = {
 
-        val sparConf = new SparkConf().setMaster("local").setAppName("WordCount")
-        val sc = new SparkContext(sparConf)
+        val sparkConf: SparkConf = new SparkConf().setMaster("local").setAppName("WordCount")
+        val sc = new SparkContext(sparkConf)
 
         wordcount91011(sc)
 

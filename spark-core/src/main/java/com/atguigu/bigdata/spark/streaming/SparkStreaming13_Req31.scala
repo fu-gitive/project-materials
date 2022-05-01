@@ -15,7 +15,7 @@ object SparkStreaming13_Req31 {
 
     def main(args: Array[String]): Unit = {
 
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
         val ssc = new StreamingContext(sparkConf, Seconds(5))
 
         val kafkaPara: Map[String, Object] = Map[String, Object](

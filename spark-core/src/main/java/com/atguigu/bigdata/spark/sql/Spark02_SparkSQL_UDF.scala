@@ -9,7 +9,7 @@ object Spark02_SparkSQL_UDF {
     def main(args: Array[String]): Unit = {
 
         // TODO 创建SparkSQL的运行环境
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().config(sparkConf).getOrCreate()
         import spark.implicits._
 

@@ -8,7 +8,7 @@ object Spark05_SparkSQL_Hive {
     def main(args: Array[String]): Unit = {
         System.setProperty("HADOOP_USER_NAME", "root")
         // TODO 创建SparkSQL的运行环境
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("sparkSQL")
         val spark = SparkSession.builder().enableHiveSupport().config(sparkConf).getOrCreate()
 
         // 使用SparkSQL连接外置的Hive

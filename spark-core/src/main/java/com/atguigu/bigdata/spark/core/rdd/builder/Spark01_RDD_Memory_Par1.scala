@@ -7,7 +7,7 @@ object Spark01_RDD_Memory_Par1 {
     def main(args: Array[String]): Unit = {
 
         // TODO 准备环境
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
         val sc = new SparkContext(sparkConf)
 
         // TODO 创建RDD

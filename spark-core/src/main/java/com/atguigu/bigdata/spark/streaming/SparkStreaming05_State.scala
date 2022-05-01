@@ -10,7 +10,7 @@ object SparkStreaming05_State {
 
     def main(args: Array[String]): Unit = {
 
-        val sparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
+        val sparkConf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("SparkStreaming")
         val ssc = new StreamingContext(sparkConf, Seconds(3))
         ssc.checkpoint("cp")
 
