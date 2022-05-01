@@ -9,6 +9,12 @@ object WC01_WordCount {
     val sparkConf: SparkConf = new SparkConf().setMaster("local").setAppName("WordCount")
     val sc: SparkContext = new SparkContext(sparkConf)
 
-    val value: RDD[String] = sc.textFile("datas")
+    val lines: RDD[String] = sc.textFile("datas")
+    val wordMap: RDD[String] = lines.flatMap(lines => lines.split(" "))
+    //wordMap.map(word=>(word,1))
+    val value: RDD[(String, Int)] = wordMap.map((_, 1))
+
+    value.foreach(println(_))
+    println(value.toString())
   }
 }

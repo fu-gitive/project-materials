@@ -19,9 +19,9 @@ object Spark02_RDD_File {
         // path路径可以是文件的具体路径，也可以目录名称
         //val rdd = sc.textFile("datas")
         // path路径还可以使用通配符 *
-        //val rdd = sc.textFile("datas/1*.txt")
+        val rdd = sc.textFile("datas/he*.txt")
         // path还可以是分布式存储系统路径：HDFS
-        val rdd = sc.textFile("hdfs://linux1:8020/test.txt")
+        //val rdd = sc.textFile("hdfs://linux1:8020/test.txt")
         rdd.collect().foreach(println)
 
         // TODO 关闭环境
