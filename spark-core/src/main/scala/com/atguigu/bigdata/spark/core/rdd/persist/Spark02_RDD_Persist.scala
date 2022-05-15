@@ -22,7 +22,9 @@ object Spark02_RDD_Persist {
 
         val reduceRDD: RDD[(String, Int)] = mapRDD.reduceByKey(_+_)
         reduceRDD.collect().foreach(println)
+
         println("**************************************")
+
         val groupRDD = mapRDD.groupByKey()
         groupRDD.collect().foreach(println)
 

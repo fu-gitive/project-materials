@@ -23,7 +23,7 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
         // 2. 将数据转换结构
         actionRDD.foreach(
             action => {
-                val datas = action.split("_")
+                val datas: Array[String] = action.split("_")
                 if (datas(6) != "-1") {
                     // 点击的场合
                     acc.add((datas(6), "click"))
@@ -73,7 +73,9 @@ object Spark04_Req1_HotCategoryTop10Analysis3 {
 
         sc.stop()
     }
+
     case class HotCategory( cid:String, var clickCnt : Int, var orderCnt : Int, var payCnt : Int )
+
     /**
       * 自定义累加器
       * 1. 继承AccumulatorV2，定义泛型

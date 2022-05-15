@@ -22,18 +22,21 @@ object Spark18_RDD_aggregateByKey_3 {
         //aggRDD.collect.foreach(println)
 
         // 获取相同key的数据的平均值 => (a, 13),(b, 14)
-        // def aggregateByKey[U: ClassTag](zeroValue: U)(seqOp: (U, V) => U,combOp: (U, U) => U): RDD[(K, U)]
+        // def aggregateByKey[U: ClassTag](zeroValue: U)(seqOp: (U, V) => U, combOp: (U, U) => U): RDD[(K, U)]
         val newRDD : RDD[(String, (Int, Int))] = rdd.aggregateByKey( (0,0) )(
             ( t, v ) => {
+                println(t._1 + v, t._2 + 1)
                 (t._1 + v, t._2 + 1)
             },
             (t1, t2) => {
+                println("----------------------------" + t1._1 + t2._1, t1._2 + t2._2)
                 (t1._1 + t2._1, t1._2 + t2._2)
             }
         )
 
         val resultRDD: RDD[(String, Int)] = newRDD.mapValues {
             case (num, cnt) => {
+                println(s"num = ${num}, cnt = ${cnt}")
                 num / cnt
             }
         }

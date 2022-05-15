@@ -10,11 +10,12 @@ object Spark04_RDD_countByKey {
         val sc = new SparkContext(sparkConf)
         // TODO - 行动算子
         val rdd2 = sc.makeRDD(List(1,1,1,99,99,8888),2)
+        //countByValue : 统计每种value出现的个数
         val intToLong: collection.Map[Int, Long] = rdd2.countByValue()
         println(intToLong)
 
         val rdd = sc.makeRDD(List(
-          ("a", 1),("a", 2),("a", 3)
+          ("a", 1),("a", 2),("a", 3),("UA", 6)
         ))
         // 统计每种 key 的个数
         val stringToLong: collection.Map[String, Long] = rdd.countByKey()

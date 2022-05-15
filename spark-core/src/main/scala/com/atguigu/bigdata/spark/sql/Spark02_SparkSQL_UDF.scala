@@ -15,6 +15,7 @@ object Spark02_SparkSQL_UDF {
 
         val df = spark.read.json("datas/user.json")
         df.createOrReplaceTempView("user")
+        df.select("id","username",  "age").show
 
         spark.udf.register("prefixName", (name:String) => {
             "Name: " + name

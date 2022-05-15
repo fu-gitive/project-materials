@@ -15,7 +15,7 @@ object Spark01_Req1_HotCategoryTop10Analysis {
         val actionRDD = sc.textFile("datas/user_visit_action.txt")
 
         // 2. 统计品类的点击数量：（品类ID，点击数量）
-        val clickActionRDD = actionRDD.filter(
+        val clickActionRDD: RDD[String] = actionRDD.filter(
             action => {
                 val datas = action.split("_")
                 datas(6) != "-1"
@@ -39,7 +39,7 @@ object Spark01_Req1_HotCategoryTop10Analysis {
 
         // orderid => 1,2,3
         // 【(1,1)，(2,1)，(3,1)】
-        val orderCountRDD = orderActionRDD.flatMap(
+        val orderCountRDD: RDD[(String, Int)] = orderActionRDD.flatMap(
             action => {
                 val datas = action.split("_")
                 val cid = datas(8)

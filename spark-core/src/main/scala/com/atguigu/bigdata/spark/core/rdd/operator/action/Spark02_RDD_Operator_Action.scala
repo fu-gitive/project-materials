@@ -35,8 +35,12 @@ object Spark02_RDD_Operator_Action {
 
         // takeOrdered : 数据排序后，取N个数据
         val rdd1 = sc.makeRDD(List(4,2,3,1))
+        // 默认升序
         val ints1: Array[Int] = rdd1.takeOrdered(3)
-        println(ints1.mkString(","))
+        println("升序排序，取前三个： " + ints1.mkString(","))
+        // 降序
+        val ints2: Array[Int] = rdd1.takeOrdered(3)(Ordering[Int].reverse)
+        println("降序排序，取前三个：" + ints2.mkString(","))
 
         sc.stop()
 

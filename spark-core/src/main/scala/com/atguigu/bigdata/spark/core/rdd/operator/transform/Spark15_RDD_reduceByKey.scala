@@ -16,6 +16,7 @@ object Spark15_RDD_reduceByKey {
             ("a", 1), ("a", 2), ("a", 3), ("b", 4)
         ))
 
+
         // reduceByKey : 相同的key的数据进行value数据的聚合操作
         // scala语言中一般的聚合操作都是两两聚合，spark基于scala开发的，所以它的聚合也是两两聚合
         // 【1，2，3】
@@ -29,8 +30,8 @@ object Spark15_RDD_reduceByKey {
 
         reduceRDD.collect().foreach(println)
 
-
-
+        //简化写法
+        val reRdd: RDD[(String, Int)] = rdd.reduceByKey(_ + _)
 
         sc.stop()
 

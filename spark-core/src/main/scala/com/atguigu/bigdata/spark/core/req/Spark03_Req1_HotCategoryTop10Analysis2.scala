@@ -15,7 +15,7 @@ object Spark03_Req1_HotCategoryTop10Analysis2 {
         // reduceByKey 聚合算子，spark会提供优化，缓存
 
         // 1. 读取原始日志数据
-        val actionRDD = sc.textFile("datas/user_visit_action.txt")
+        val actionRDD: RDD[String] = sc.textFile("datas/user_visit_action.txt")
 
         // 2. 将数据转换结构
         //    点击的场合 : ( 品类ID，( 1, 0, 0 ) )
@@ -23,7 +23,7 @@ object Spark03_Req1_HotCategoryTop10Analysis2 {
         //    支付的场合 : ( 品类ID，( 0, 0, 1 ) )
         val flatRDD: RDD[(String, (Int, Int, Int))] = actionRDD.flatMap(
             action => {
-                val datas = action.split("_")
+                val datas: Array[String] = action.split("_")
                 if (datas(6) != "-1") {
                     // 点击的场合
                     List((datas(6), (1, 0, 0)))
