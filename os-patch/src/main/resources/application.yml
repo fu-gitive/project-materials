@@ -1,0 +1,21 @@
+server:
+  port: 12345
+
+spring:
+  application:
+    name: os-patching-service
+  task:
+    execution:
+      mode: virtual_threads
+
+ospatch:
+  api:
+    base-url: https://api.thirdparty.com/os-patch
+  auth:
+    username: your-username
+    password: your-password
+
+logging:
+  level:
+    com.example.ospatching: INFO
+    org.springframework.web.reactive.function.client: WARN
